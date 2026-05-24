@@ -1,0 +1,90 @@
+* {
+    font-family: "Fira Sans Semibold", FontAwesome, sans-serif;
+    background-image: none;
+    transition: 200ms;
+    box-shadow: none;
+    color: #c0caf5;
+}
+
+window {
+    background-color: rgba(26, 27, 38, 0.5);
+}
+
+/* Hide labels */
+button label {
+    font-size: 0px;
+}
+
+/* Base Buttons */
+button {
+    min-height: 35px;          
+    margin: 35px 12px; 
+    padding: 8px;
+    border-radius: 12px;       
+    background-color: #1a1b26;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* CRITICAL FIX: Explicitly limits the icon size to a smaller portion of the button */
+    background-size: 30%;  
+    
+    border: 2px solid #24283b;
+}
+
+/* Individual Hover States with Tokyo Night Accents */
+
+#lock:hover {
+    background-color: rgba(187, 154, 247, 0.18);
+    border: 2px solid #bb9af7;
+    background-size: 35%; /* Subtle icon grow on hover */
+    box-shadow: 0 0 14px rgba(187, 154, 247, 0.3);
+}
+
+#logout:hover {
+    background-color: rgba(122, 162, 247, 0.18);
+    border: 2px solid #7aa2f7;
+    background-size: 35%;
+    box-shadow: 0 0 14px rgba(122, 162, 247, 0.3);
+}
+
+#suspend:hover {
+    background-color: rgba(224, 175, 104, 0.18);
+    border: 2px solid #e0af68;
+    background-size: 35%;
+    box-shadow: 0 0 14px rgba(224, 175, 104, 0.3);
+}
+
+#reboot:hover {
+    background-color: rgba(255, 158, 100, 0.18);
+    border: 2px solid #ff9e64;
+    background-size: 35%;
+    box-shadow: 0 0 14px rgba(255, 158, 100, 0.3);
+}
+
+#shutdown:hover {
+    background-color: rgba(247, 118, 141, 0.18);
+    border: 2px solid #f7768e;
+    background-size: 35%;
+    box-shadow: 0 0 14px rgba(247, 118, 141, 0.3);
+}
+
+/* Icons */
+#lock {
+    background-image: image(url("icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("icons/suspend.png"));
+}
+
+#shutdown {
+    background-image: image(url("icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("icons/reboot.png"));
+}
