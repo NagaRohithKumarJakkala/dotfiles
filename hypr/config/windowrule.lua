@@ -1,94 +1,160 @@
--- If the API uses a table structure (most common for modern Hypr Lua configs):
-hl.windowrules = {
-    { "tile", "class:^(Brave-browser)$" },
-    { "float", "class:^(org.pulseaudio.pavucontrol)$" },
-    { "float", "class:^(blueman-manager)$" },
-    { "float", "class:^(nm-connection-editor)$" },
-    { "float", "class:^(qalculate-gtk)$" },
-    
-    -- Picture-in-Picture Rules
-    { "float", "title:^(Picture-in-Picture)$" },
-    { "pin", "title:^(Picture-in-Picture)$" },
-    { "move 69.5% 4%", "title:^(Picture-in-Picture)$" },
-    
-    -- Fullscreen Idle Inhibition
-    { "idleinhibit fullscreen", "class:.*" },
-    -- Pavucontrol
-    { "float", "class:.*org.pulseaudio.pavucontrol.*" },
-    { "size 700 600", "class:.*org.pulseaudio.pavucontrol.*" },
-    { "center", "class:.*org.pulseaudio.pavucontrol.*" },
-    { "pin", "class:.*org.pulseaudio.pavucontrol.*" },
+-- Brave Browser
+hl.window_rule({
+    name  = "brave-tile",
+    match = { class = "^(Brave-browser)$" },
+    tile  = true,
+})
 
-    -- Waypaper
-    { "float", "class:.*waypaper.*" },
-    { "size 900 700", "class:.*waypaper.*" },
-    { "center", "class:.*waypaper.*" },
-    { "pin", "class:.*waypaper.*" },
+-- Simple Float Rules
+hl.window_rule({
+    name  = "simple-floats",
+    match = { class = "^(blueman-manager)$|^(nm-connection-editor)$|^(qalculate-gtk)$" },
+    float = true,
+})
 
-    -- ML4W Calendar
-    { "float", "class:com.ml4w.calendar" },
-    { "move 100%-w-16 66", "class:com.ml4w.calendar" },
-    { "pin", "class:com.ml4w.calendar" },
-    { "size 400 400", "class:com.ml4w.calendar" },
+-- Picture-in-Picture Rules
+hl.window_rule({
+    name  = "pip-rules",
+    match = { title = "^(Picture-in-Picture)$" },
+    float = true,
+    pin   = true,
+    move  = "69.5% 4%",
+})
 
-    -- ML4W Sidebar
-    { "float", "class:com.ml4w.sidebar" },
-    { "move 100%-w-16 66", "class:com.ml4w.sidebar" },
-    { "pin", "class:com.ml4w.sidebar" },
-    { "size 400 740", "class:com.ml4w.sidebar" },
+-- Pavucontrol
+hl.window_rule({
+    name   = "pavucontrol-rules",
+    match  = { class = ".*org.pulseaudio.pavucontrol.*" },
+    float  = true,
+    size   = "700 600",
+    center = true,
+    pin    = true,
+})
 
-    -- ML4W Welcome App
-    { "float", "class:com.ml4w.welcome" },
-    { "size 700 600", "class:com.ml4w.welcome" },
-    { "center", "class:com.ml4w.welcome" },
-    { "pin", "class:com.ml4w.welcome" },
+-- Waypaper
+hl.window_rule({
+    name   = "waypaper-rules",
+    match  = { class = ".*waypaper.*" },
+    float  = true,
+    size   = "900 700",
+    center = true,
+    pin    = true,
+})
 
-    -- ML4W Settings App
-    { "float", "class:com.ml4w.settings" },
-    { "size 800 600", "class:com.ml4w.settings" },
-    { "move 10% 20%", "class:com.ml4w.settings" },
+-- ML4W Calendar
+hl.window_rule({
+    name  = "ml4w-calendar-rules",
+    match = { class = "com.ml4w.calendar" },
+    float = true,
+    move  = "100%-w-16 66",
+    pin   = true,
+    size  = "400 400",
+})
 
-    -- Blueman Manager
-    { "float", "class:blueman-manager" },
-    { "size 800 600", "class:blueman-manager" },
-    { "center", "class:blueman-manager" },
+-- ML4W Sidebar
+hl.window_rule({
+    name  = "ml4w-sidebar-rules",
+    match = { class = "com.ml4w.sidebar" },
+    float = true,
+    move  = "100%-w-16 66",
+    pin   = true,
+    size  = "400 740",
+})
 
-    -- nwg-look & nwg-displays
-    { "float", "class:(nwg-look|nwg-displays)" },
-    { "size 700 600", "class:(nwg-look|nwg-displays)" },
-    { "move 10% 20%", "class:(nwg-look|nwg-displays)" },
-    { "pin", "class:(nwg-look|nwg-displays)" },
+-- ML4W Welcome App
+hl.window_rule({
+    name   = "ml4w-welcome-rules",
+    match  = { class = "com.ml4w.welcome" },
+    float  = true,
+    size   = "700 600",
+    center = true,
+    pin    = true,
+})
 
-    -- System Mission Center
-    { "float", "class:io.missioncenter.MissionCenter" },
-    { "pin", "class:io.missioncenter.MissionCenter" },
-    { "center", "class:io.missioncenter.MissionCenter" },
-    { "size 900 600", "class:io.missioncenter.MissionCenter" },
+-- ML4W Settings App
+hl.window_rule({
+    name  = "ml4w-settings-rules",
+    match = { class = "com.ml4w.settings" },
+    float = true,
+    size  = "800 600",
+    move  = "10% 20%",
+})
 
-    -- System Mission Center Preference Window
-    { "float", "class:missioncenter;title:^(Preferences)$" },
-    { "pin", "class:missioncenter;title:^(Preferences)$" },
-    { "center", "class:missioncenter;title:^(Preferences)$" },
+-- Blueman Manager
+hl.window_rule({
+    name   = "blueman-manager-rules",
+    match  = { class = "blueman-manager" },
+    float  = true,
+    size   = "800 600",
+    center = true,
+})
 
-    -- Gnome Calculator
-    { "float", "class:org.gnome.Calculator" },
-    { "size 700 600", "class:org.gnome.Calculator" },
-    { "center", "class:org.gnome.Calculator" },
+-- nwg-look & nwg-displays
+hl.window_rule({
+    name  = "nwg-tools-rules",
+    match = { class = "(nwg-look|nwg-displays)" },
+    float = true,
+    size  = "700 600",
+    move  = "10% 20%",
+    pin   = true,
+})
 
-    -- Emoji Picker Smile
-    { "float", "class:it.mijorus.smile" },
-    { "pin", "class:it.mijorus.smile" },
-    { "move 100%-w-40 90", "class:it.mijorus.smile" },
+-- System Mission Center
+hl.window_rule({
+    name   = "mission-center-rules",
+    match  = { class = "io.missioncenter.MissionCenter" },
+    float  = true,
+    pin    = true,
+    center = true,
+    size   = "900 600",
+})
 
-    -- Hyprland Share Picker
-    { "float", "class:hyprland-share-picker" },
-    { "pin", "class:hyprland-share-picker" },
-    { "center", "class:hyprland-share-picker" },
-    { "size 600 400", "class:hyprland-share-picker" },
+-- System Mission Center Preference Window
+hl.window_rule({
+    name   = "mission-center-prefs-rules",
+    match  = { 
+        class = "missioncenter",
+        title = "^(Preferences)$" 
+    },
+    float  = true,
+    pin    = true,
+    center = true,
+})
 
-    -- General & Ghostty Floating
-    { "float", "class:(dotfiles-floating|ml4w.dotfiles.floating)" },
-    { "size 1000 700", "class:(dotfiles-floating|ml4w.dotfiles.floating)" },
-    { "center", "class:(dotfiles-floating|ml4w.dotfiles.floating)" },
-    { "pin", "class:(dotfiles-floating|ml4w.dotfiles.floating)"}
-}
+-- Gnome Calculator
+hl.window_rule({
+    name   = "gnome-calculator-rules",
+    match  = { class = "org.gnome.Calculator" },
+    float  = true,
+    size   = "700 600",
+    center = true,
+})
+
+-- Emoji Picker Smile
+hl.window_rule({
+    name  = "smile-emoji-rules",
+    match = { class = "it.mijorus.smile" },
+    float = true,
+    pin   = true,
+    move  = "100%-w-40 90",
+})
+
+-- Hyprland Share Picker
+hl.window_rule({
+    name   = "hyprland-share-picker-rules",
+    match  = { class = "hyprland-share-picker" },
+    float  = true,
+    pin    = true,
+    center = true,
+    size   = "600 400",
+})
+
+-- General & Ghostty Floating
+hl.window_rule({
+    name   = "general-floating-rules",
+    match  = { class = "(dotfiles-floating|ml4w.dotfiles.floating)" },
+    float  = true,
+    size   = "1000 700",
+    center = true,
+    pin    = true,
+})
