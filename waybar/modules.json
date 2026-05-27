@@ -15,7 +15,6 @@
             "*": 5
         }
     },
-
     "wlr/taskbar": {
         "format": "{icon}",
         "icon-size": 18,
@@ -31,7 +30,6 @@
             "Foot Server": "Terminal"
         }
     },
-
     "hyprland/window": {
         "max-length": 60,
         "rewrite": {
@@ -43,30 +41,9 @@
         },
         "separate-outputs": true
     },
-
-    "custom/ml4w-welcome": {
-        "on-click": "flatpak run com.ml4w.sidebar",
-        "format": " ",
-        "tooltip-format": "Open ML4W Sidebar App"
-    },
-
     "custom/empty": {
         "format": ""
     },
-
-    "custom/tools": {
-        "format": "",
-        "tooltip-format": "Tools"
-    },
-
-    "custom/cliphist": {
-        "format": "",
-        "on-click": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh",
-        "on-click-right": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh d",
-        "on-click-middle": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh w",
-        "tooltip-format": "Left: Open clipboard Manager\nRight: Delete an entry\nMiddle: Clear list"
-    },
-
     "custom/updates": {
         "format": "  {}",
         "escape": true,
@@ -76,71 +53,6 @@
         "on-click": "~/.config/ml4w/settings/installupdates.sh",
         "on-click-right": "~/.config/ml4w/settings/software.sh"
     },
-
-    "custom/wallpaper": {
-        "format": "",
-        "on-click": "bash -c waypaper &",
-        "on-click-right": "~/.config/hypr/scripts/wallpaper-effects.sh",
-        "tooltip-format": "Left: Select a wallpaper\nRight: Select wallpaper effect"
-    },
-
-    "custom/waybarthemes": {
-        "format": "",
-        "on-click": "~/.config/waybar/launch.sh",
-        "tooltip-format": "Reload waybar"
-    },
-
-    "custom/settings": {
-        "format": "",
-        "on-click": "sleep 0.1 && com.ml4w.dotfilessettings",
-        "tooltip-format": "ML4W Dotfiles Settings"
-    },
-
-    "custom/keybindings": {
-        "format": "",
-        "on-click": "~/.config/hypr/scripts/keybindings.sh",
-        "tooltip": false
-    },
-
-    "custom/chatgpt": {
-        "format": " ",
-        "on-click": "~/.config/ml4w/settings/ai.sh",
-        "tooltip-format": "AI Support"
-    },
-
-    "custom/calculator": {
-        "format": "",
-        "on-click": "qalculate-gtk",
-        "tooltip-format": "Open calculator"
-    },
-
-    "custom/windowsvm": {
-        "format": "",
-        "on-click": "~/.config/ml4w/scripts/launchvm.sh",
-        "tooltip": false
-    },
-
-    "custom/appmenu": {
-        "format": "Apps",
-        "on-click": "sleep 0.2;pkill rofi || rofi -show drun -replace",
-        "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
-        "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
-    },
-
-    "custom/appmenuicon": {
-        "format": "",
-        "on-click": "sleep 0.2;rofi -show drun -replace",
-        "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
-        "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
-    },
-
-    "custom/exit": {
-        "format": "",
-        "on-click": "~/.config/ml4w/scripts/wlogout.sh",
-        "on-click-right": "hyprlock",
-        "tooltip-format": "Left: Power menu\nRight: Lock screen"
-    },
-
     "custom/notification": {
         "tooltip-format": "Left: Notifications\nRight: Do not disturb",
         "format": "{icon}",
@@ -161,14 +73,6 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
-
-    "custom/hyprshade": {
-        "format": "",
-        "tooltip-format": "Toggle Screen Shader",
-        "on-click": "sleep 0.5; ~/.config/hypr/scripts/hyprshade.sh",
-        "on-click-right": "sleep 0.5; ~/.config/hypr/scripts/hyprshade.sh rofi"
-    },
-
     "custom/hypridle": {
         "format": "",
         "return-type": "json",
@@ -178,90 +82,24 @@
         "exec": "~/.config/hypr/scripts/hypridle.sh status",
         "on-click": "~/.config/hypr/scripts/hypridle.sh toggle"
     },
-
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-
     "tray": {
         "icon-size": 21,
         "spacing": 10
     },
-
     "clock": {
         "format": "{:%H:%M %a}",
         "on-click": "flatpak run com.ml4w.calendar",
         "timezone": "",
         "tooltip": false
     },
-
-    "custom/system": {
-        "format": "",
-        "tooltip": false
-    },
-
     "cpu": {
-        "format": "C {usage}% ",
+        "format": "C {usage}%",
         "on-click": "~/.config/ml4w/settings/system-monitor.sh"
     },
-
     "memory": {
-        "format": "M {}% ",
+        "format": "M {}%",
         "on-click": "~/.config/ml4w/settings/system-monitor.sh"
     },
-
-    "disk": {
-        "interval": 30,
-        "format": "D {percentage_used}% ",
-        "path": "/",
-        "on-click": "~/.config/ml4w/settings/system-monitor.sh"
-    },
-
-    "hyprland/language": {
-        "format": "/ K {short}"
-    },
-
-    "group/hardware": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-memory",
-            "transition-left-to-right": false
-        },
-        "modules": ["custom/system", "disk", "cpu", "memory", "hyprland/language"]
-    },
-
-    "group/tools": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-memory",
-            "transition-left-to-right": false
-        },
-        "modules": ["custom/tools", "custom/cliphist", "custom/hypridle", "custom/hyprshade"]
-    },
-
-    "group/links": {
-        "orientation": "horizontal",
-        "modules": ["custom/empty"]
-    },
-
-    "group/settings": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-memory",
-            "transition-left-to-right": true
-        },
-        "modules": ["custom/settings", "custom/waybarthemes", "custom/wallpaper"]
-    },
-
     "network": {
         "format": "{ifname}",
         "format-wifi": "  {essid} ({signalStrength}%)",
@@ -273,9 +111,7 @@
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
         "on-click": "~/.config/ml4w/settings/networkmanager.sh",
-        "on-click-right": "~/.config/ml4w/scripts/nm-applet.sh toggle"
     },
-
     "battery": {
         "states": {
             "warning": 30,
@@ -287,7 +123,6 @@
         "format-alt": "{icon}  {time}",
         "format-icons": [" ", " ", " ", " ", " "]
     },
-
     "power-profiles-daemon": {
         "format": "{icon}",
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
@@ -299,9 +134,8 @@
             "power-saver": ""
         }
     },
-
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
+        "format": "{icon} {volume}%",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": "  {icon} {format_source}",
         "format-muted": "  {format_source}",
@@ -314,27 +148,20 @@
             "phone": " ",
             "portable": " ",
             "car": " ",
-            "default": [" ", "  ", "  "]
+            "default": ["", " ", " "]
         },
         "on-click": "pavucontrol"
     },
 
     "bluetooth": {
-        "format": " {status}",
-        "format-connected": " ✓",
-        "format-disconnected": " ✖",
-        "format-off": " ○",
-        "format-disabled": " ◌",
+        "format": "{status}",
+        "format-connected": "✓",
+        "format-disconnected": "✖",
+        "format-off": "○",
+        "format-disabled": "◌",
         "interval": 30,
         "on-click": "bzmenu --launcher fuzzel"
     },
-
-    "user": {
-        "format": "{user}",
-        "interval": 60,
-        "icon": false
-    },
-
     "mpd": {
         "format": "{stateIcon} {artist} - {title}",
         "format-disconnected": "MPD Disconnected",
@@ -353,7 +180,6 @@
         "repeat": false,
         "single": false
     },
-
     "custom/media": {
         "format": "{icon} {text}",
         "return-type": "json",
@@ -365,10 +191,4 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
     },
-
-    "backlight": {
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
-        "scroll-step": 1
-    }
 }
