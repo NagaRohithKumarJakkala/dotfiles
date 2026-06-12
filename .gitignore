@@ -50,7 +50,6 @@ hypr/colors.conf
 hypr/conf/
 hypr/effects/
 hypr/hyprland.conf
-hypr/scripts/cliphist.sh
 hypr/shaders/
 kaccessrc
 kactivitymanagerd-statsrc
@@ -100,7 +99,6 @@ powermanagementprofilesrc
 pulse/
 qt6ct
 quickshell/
-rofi/
 session/
 spotify/
 systemd/
