@@ -6,7 +6,6 @@
 -- Modifier and Script Path Setup
 local mainMod = "SUPER"
 local HYPRSCRIPTS = os.getenv("HOME") .. "/.config/hypr/scripts"
-local SCRIPTS = os.getenv("HOME") .. "/.config/ml4w/scripts"
 
 -- Applications
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("kitty"))
@@ -66,7 +65,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("pkill rofi || rofi -show drun -repla
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("hyprlauncher"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/waybar/launch.sh"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/loadconfig.sh"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(SCRIPTS .. "/cliphist.sh"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/cliphist.sh"))
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/hyprshade.sh"))
 hl.bind(mainMod .. " + ALT + G", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/gamemode.sh"))
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
