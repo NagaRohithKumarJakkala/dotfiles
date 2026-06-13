@@ -1,19 +1,11 @@
--- -----------------------------------------------------
--- Key bindings (Updated for Hyprland 0.55+ Lua API)
--- name: "Default"
--- -----------------------------------------------------
-
--- Modifier and Script Path Setup
 local mainMod = "SUPER"
 local HYPRSCRIPTS = os.getenv("HOME") .. "/.config/hypr/scripts"
 
--- Applications
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("brave"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus --new-window"))
 hl.bind(mainMod .. " + CTRL + C", hl.dsp.exec_cmd("gnome-calculator"))
 
--- Windows
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("firefox"))
@@ -44,10 +36,10 @@ hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.resize({ x = 0, y = 100 }))
 hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.resize({ x = 0, y = -100 }))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.layout("togglegroup"))
 hl.bind(mainMod .. " + K", hl.dsp.layout( "swapsplit" ))
-hl.bind(mainMod .. " + ALT + left", hl.dsp.window.swap({ direction = "l" }))
-hl.bind(mainMod .. " + ALT + right", hl.dsp.window.swap({ direction = "r" }))
-hl.bind(mainMod .. " + ALT + up", hl.dsp.window.swap({ direction = "u" }))
-hl.bind(mainMod .. " + ALT + down", hl.dsp.window.swap({ direction = "d" }))
+hl.bind(mainMod .. " + ALT + left", hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + ALT + right", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + ALT + up", hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + ALT + down", hl.dsp.window.swap({ direction = "down" }))
 
 -- Window Cycling (Repeatable using hlbinder/hlbinde equivalents)
 hl.bind("ALT + Tab", hl.dsp.layout("cyclenext"), { ["repeat"] = true })

@@ -1,0 +1,139 @@
+configuration {
+    modi:                        "drun,filebrowser,window,run";
+    font:                        "JetBrainsMono Nerd Font Medium 12"; /* Unified font choice */
+    show-icons:                  true;
+    icon-theme:                  "Tela-circle-dracula";
+    display-drun:                " ";
+    display-run:                 " ";
+    display-filebrowser:         " ";
+    display-window:              " ";
+    drun-display-format:         "{name}";
+    hover-select:                false;
+    scroll-method:               1;
+    me-select-entry:             "";
+    me-accept-entry:             "MousePrimary";
+    window-format:               "{w} · {c} · {t}";
+}
+* {
+    font: "JetBrainsMono Nerd Font Medium 12";
+
+    bg0     : #000000; 
+    bg1     : #050505;
+    bg2     : #121214;
+    bg-sel  : #1c1c1f;
+
+    fg0     : #c0caf5;
+    fg1     : #a9b1d6;
+    fg2     : #565f89;
+
+    red     : #f7768e;
+    blue    : #7aa2f7;
+    cyan    : #7dcfff;
+    magenta : #bb9af7;
+
+    background-color : transparent;
+    text-color       : @fg0;
+}
+
+window {
+    location : center; 
+    anchor   : center;
+    width    : 600px;  
+    x-offset : 0px;    
+    y-offset : 0px;
+
+    background-color : @bg1;
+
+    border        : 2px;
+    border-color  : #2a2a2e; 
+    border-radius : 8px;
+    
+    padding       : 0px; 
+}
+
+mainbox {
+    background-color : transparent;
+    padding          : 0px;
+    spacing          : 0px;
+    children         : [ inputbar, listview ];
+}
+
+inputbar {
+    padding          : 12px; 
+    background-color : @bg0; 
+    children         : [ textbox-search, entry ];
+    spacing          : 8px;   
+    border-radius    : 6px 6px 0px 0px; 
+}
+
+textbox-search {
+    expand           : false;
+    str              : " "; 
+    text-color       : @blue; 
+    vertical-align   : 0.5;
+    background-color : transparent;
+}
+
+entry {
+    expand           : true;
+    text-color       : @fg0;
+    vertical-align   : 0.5; 
+    placeholder      : "Search";
+    placeholder-color: @fg2;
+    background-color : transparent;
+}
+
+listview {
+    lines            : 8;
+    padding          : 10px; 
+    spacing          : 4px;
+    background-color : @bg1;
+    scrollbar        : false;
+    
+    border           : 0px 0px 0px;
+    border-color     : transparent;
+}
+
+element {
+    padding       : 8px 12px;
+    background-color : transparent;
+    text-color    : @fg1;
+    border-radius : 6px;
+}
+
+element normal.normal {
+    background-color : transparent;
+    text-color       : @fg1;
+}
+
+element alternate.normal {
+    background-color : @bg2;   
+    text-color       : @fg1;   
+}
+
+element selected.normal {
+    background-color : @bg-sel; 
+    text-color       : @cyan;   
+}
+
+element selected.active {
+    background-color : @bg-sel;
+    text-color       : @blue;
+}
+
+element selected.urgent {
+    background-color : @bg-sel;
+    text-color       : @red;
+}
+
+element-icon {
+    size             : 1em;
+    background-color : transparent;
+    text-color       : inherit;
+}
+
+element-text {
+    background-color : transparent;
+    text-color       : inherit;
+}
+

@@ -4,7 +4,7 @@ require("config.cursor")
 
 require("config.environment")
 
-require("config.keyboard")
+require("config.input")
 
 require("config.colors")
 

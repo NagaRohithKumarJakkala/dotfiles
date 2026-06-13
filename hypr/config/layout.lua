@@ -26,13 +26,4 @@ hl.config({
     },
 })
 
--- -----------------------------------------------------
--- New 1:1 Trackpad Gestures (Hyprland 0.51+)
--- -----------------------------------------------------
 
--- Swiping 3 fingers horizontally switches workspaces 1:1
-hl.gesture({ 
-    fingers = 3, 
-    direction = "horizontal", 
-    action = "workspace" 
-})

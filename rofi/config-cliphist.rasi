@@ -1,0 +1,218 @@
+configuration {
+    modi:                        "drun,filebrowser,window,run";
+    font:                        "JetBrainsMono Nerd Font Medium 12"; /* Unified font choice */
+    show-icons:                  true;
+    icon-theme:                  "Tela-circle-dracula";
+    display-drun:                " ";
+    display-run:                 " ";
+    display-filebrowser:         " ";
+    display-window:              " ";
+    drun-display-format:         "{name}";
+    hover-select:                false;
+    scroll-method:               1;
+    me-select-entry:             "";
+    me-accept-entry:             "MousePrimary";
+    window-format:               "{w} · {c} · {t}";
+}
+
+* {
+    bg0     : #000000; 
+    bg1     : #050505;
+    bg2     : #121214;
+    bg-sel  : #1c1c1f;
+
+    fg0     : #c0caf5;
+    fg1     : #a9b1d6;
+    fg2     : #565f89;
+
+    red     : #f7768e;
+    blue    : #7aa2f7;
+    cyan    : #7dcfff;
+    magenta : #bb9af7;
+
+    background-color : transparent;
+    text-color       : @fg0;
+}
+
+window {
+    location:                     center; 
+    anchor:                       center;
+    width:                        600px; 
+    x-offset:                     0px;
+    y-offset:                     0px;
+    spacing:                      0px;
+    padding:                      0px;
+    margin:                       0px; 
+    cursor:                       "default";
+    transparency:                 "real";
+    fullscreen:                   false;
+    enabled:                      true;
+    
+    background-color:             @bg1;
+    border:                       2px;
+    border-color:                 #2a2a2e;
+    border-radius:                8px;
+}
+
+mainbox {
+    enabled:                      true;
+    spacing:                      0em;
+    padding:                      0px;
+    orientation:                  vertical;
+    children:                     [ "listbox" ];
+    background-color:             transparent;
+}
+
+inputbar {
+    enabled:                      true;
+    padding:                      12px;
+    spacing:                      8px;
+    children:                     [ "textbox-prompt-colon", "entry" ];
+    background-color:             @bg0;
+    border-radius:                6px 6px 0px 0px; 
+}
+
+textbox-prompt-colon {
+    enabled:                      true;
+    expand:                       false;
+    str:                          " ";
+    padding:                      0px 4px 0px 0px;
+    text-color:                   @blue;
+    vertical-align:               0.5;
+    background-color:             transparent;
+}
+
+entry {
+    enabled:                      true;
+    expand:                       true;
+    background-color:             transparent;
+    text-color:                   @fg0;
+    cursor:                       text;
+    placeholder:                  "Search";
+    placeholder-color:            @fg2;
+}
+
+listbox {
+    padding:                      0em;
+    spacing:                      0em;
+    orientation:                  vertical;
+    children:                     [ "inputbar", "listview" , "message" ];
+    background-color:             @bg1;
+}
+
+listview {
+    padding:                      10px;
+    spacing:                      4px;
+    margin:                       0em;
+    enabled:                      true;
+    columns:                      1;
+    lines:                        8; 
+    cycle:                        true;
+    dynamic:                      true;
+    scrollbar:                    false;
+    layout:                       vertical;
+    reverse:                      false;
+    fixed-height:                 true;
+    fixed-columns:                true;
+    cursor:                       "default";
+    background-color:             transparent;
+    text-color:                   @fg1;
+    
+    border:                       0px; 
+    border-color:                 transparent;
+}
+
+element {
+    enabled:                      true;
+    padding:                      8px 12px;
+    margin:                       0em;
+    cursor:                       pointer;
+    background-color:             transparent;
+    text-color:                   @fg1;
+    border-radius:                6px;
+}
+
+element normal.normal {
+    background-color:             transparent;
+    text-color:                   @fg1;
+}
+
+element alternate.normal {
+    background-color:             @bg2;
+    text-color:                   @fg1;
+}
+
+element selected.normal {
+    background-color:             @bg-sel;
+    text-color:                   @cyan; 
+}
+
+element selected.active {
+    background-color:             @bg-sel;
+    text-color:                   @blue;
+}
+
+element selected.urgent {
+    background-color:             @bg-sel;
+    text-color:                   @red;
+}
+
+element normal.active {
+    background-color:             transparent;
+    text-color:                   @blue;
+}
+
+element normal.urgent {
+    background-color:             transparent;
+    text-color:                   @red;
+}
+
+element alternate.active {
+    background-color:             @bg2;
+    text-color:                   @blue;
+}
+
+element alternate.urgent {
+    background-color:             @bg2;
+    text-color:                   @red;
+}
+
+element-icon {
+    size:                         1em; 
+    cursor:                       inherit;
+    background-color:             transparent;
+    text-color:                   inherit;
+}
+
+element-text {
+    vertical-align:               0.5;
+    horizontal-align:             0.0;
+    cursor:                       inherit;
+    background-color:             transparent;
+    text-color:                   inherit;
+}
+
+message {
+    background-color:             transparent;
+    border:                       0em;
+    margin:                       0px;
+    padding:                      0px;
+    spacing:                      0em;
+}
+
+textbox {
+    padding:                      12px;
+    margin:                       0em;
+    border-radius:                0em;
+    background-color:             @bg1;
+    text-color:                   @fg1;
+    vertical-align:               0.5;
+    horizontal-align:             0.0;
+}
+
+error-message {
+    padding:                      2em;
+    border-radius:                8px;
+    background-color:             @bg1;
+    text-color:                   @red;
+}
