@@ -1,11 +1,10 @@
--- -----------------------------------------------------
--- Misc settings
--- -----------------------------------------------------
-
 hl.config({
     misc = {
         disable_hyprland_logo = true,
         disable_splash_rendering = true,
         initial_workspace_tracking = 1,
+        enable_swallow = true,
+        swallow_regex = "^(kitty)",
+        swallow_exception_regex="wkey"
     },
 })

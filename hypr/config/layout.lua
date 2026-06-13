@@ -1,7 +1,3 @@
--- -----------------------------------------------------
--- Layouts & Interaction Settings (Updated for New Gesture API)
--- -----------------------------------------------------
-
 hl.config({
     general = {
         layout = "dwindle",
@@ -23,6 +19,7 @@ hl.config({
         workspace_back_and_forth = true,
         allow_workspace_cycles = true,
         pass_mouse_when_bound = false,
+        hide_special_on_workspace_change=true,
     },
 })
 
