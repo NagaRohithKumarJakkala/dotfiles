@@ -25,19 +25,12 @@
     "script-fail-notify": true,
 
     "widgets": [
-      "mpris",
       "dnd",
       "notifications",
       "buttons-grid"
     ],
    
     "widget-config": {
-        "backlight": {
-            "device": "amdgpu_bl1",
-            "label": "󰃠",
-            "slider": true,
-            "min": 10
-        },
         "volume": {
             "device": "default",
             "label": "",
@@ -58,40 +51,8 @@
         "buttons-grid": {
             "actions": [
                 {
-                    "label": "󰌪",
-                    "type": "toggle",
-                    "command": "bash -c '$HOME/.local/bin/powerprofile --toggle-quiet'",
-                    "update-command": "bash -c '$HOME/.local/bin/powerprofile --is-quiet'"
-                },
-                {
-                    "label": "",
-                    "type": "toggle",
-                    "command": "bash -c '$HOME/.local/bin/caffeine'",
-                    "update-command": "bash -c '$HOME/.local/bin/caffeine --is-running'"
-                },
-                {
-                    "label": "",
-                    "type": "toggle",
-                    "command": "bash -c '$HOME/.local/bin/mictoggle --silent'",
-                    "update-command": "bash -c '$HOME/.local/bin/mictoggle --is-muted'"
-                },
-                {
                     "label": "",
                     "command": "kitty htop ; swaync-client -cp"
-                },
-                {
-                    "label": "󰃟",
-                    "type": "toggle",
-                    "command": "bash -c '$HOME/.local/bin/themesw'",
-                    "update-command": "bash -c '[ $($HOME/.local/bin/themesw --current) = light ] && echo true || echo false'"
-                },
-                {
-                    "label": "",
-                    "command": "hyprctl dispatch exec nwg-look ; swaync-client -cp"
-                },
-                {
-                    "label": "",
-                    "command": "swaync-client -cp ; bash -c $HOME/.config/rofi/bin/logout"
                 }
             ]
         }

@@ -7,6 +7,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus --new-window"))
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("quickshell --path ~/Dev/quickshell/main.qml"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("thunderbird"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("firefox -P apps --no-remote --new-window https://web.whatsapp.com"))
@@ -44,11 +45,13 @@ hl.bind(mainMod .. " + ALT + down", hl.dsp.window.swap({ direction = "down" }))
 
 -- Window Cycling (Repeatable using hlbinder/hlbinde equivalents)
 
+
 -- Actions & Scripts
 hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh"))
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --instant"))
-hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --instant-area"))
+hl.bind("PRINT", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh"))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("quickshell --path ~/.config/quickshell/screenshot.qml"))
+-- hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --instant-area"))
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("wlogout -b 5"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("pkill rofi || rofi -show drun -replace -i"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("hyprlauncher"))
@@ -68,7 +71,8 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
-hl.bind(mainMod .. " + Tab", hl.dsp.focus({ workspace = "m+1" }))
+
+hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("qs ipc -c overview call overview toggle"))
 hl.bind(mainMod .. " + SHIFT + Tab",   hl.dsp.focus({ workspace = "m-1" }))
 
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))

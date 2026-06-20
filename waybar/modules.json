@@ -21,9 +21,10 @@
         "tooltip-format": "{title}",
         "on-click": "activate",
         "on-click-middle": "close",
-        "ignore-list": ["Alacritty"],
+        "ignore-list": [],
         "app_ids-mapping": {
-            "firefoxdeveloperedition": "firefox-developer-edition"
+            "firefoxdeveloperedition": "firefox-developer-edition",
+            "whatsapp-browser": "whatsapp-firefox"
         },
         "rewrite": {
             "Firefox Web Browser": "Firefox",
@@ -72,6 +73,9 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
+    },
+    "custom/block":{
+        "format" : "Rohith",
     },
     "custom/hypridle": {
         "format": "",
@@ -189,6 +193,7 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click":"~/.config/waybar/toggle-mp.sh &"
     },
 }
