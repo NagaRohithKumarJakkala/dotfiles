@@ -2,6 +2,7 @@ local mainMod = "SUPER"
 local HYPRSCRIPTS = os.getenv("HOME") .. "/.config/hypr/scripts"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("kitty"))
+hl.bind("ALT + RETURN", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("brave"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus --new-window"))
 
@@ -52,6 +53,7 @@ hl.bind("PRINT", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("quickshell --path ~/.config/quickshell/screenshot.qml"))
 -- hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --instant-area"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("scrcpy -d"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("wlogout -b 5"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("pkill rofi || rofi -show drun -replace -i"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("hyprlauncher"))

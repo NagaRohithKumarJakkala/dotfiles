@@ -5,6 +5,13 @@ hl.window_rule({
     tile  = true,
 })
 
+hl.window_rule({
+    name = "scrcpy",
+    match = {class = "^(scrcpy)$"},
+    float= true
+}
+)
+
 -- Simple Float Rules
 hl.window_rule({
     name  = "simple-floats",
