@@ -121,17 +121,17 @@ ShellRoot {
 
         Process {
             id: winShot
-            command: ["sh", "-c", "sleep 0.1 && hyprshot -m window"]
+            command: ["sh", "-c", "sleep 0.1 && hyprshot -m window -o ~/Pictures/Screenshots/"]
         }
 
         Process {
             id: fullShot
-            command: ["sh", "-c", "sleep 0.1 && hyprshot -m output"]
+            command: ["sh", "-c", "sleep 0.1 && hyprshot -m output -o ~/Pictures/Screenshots/"]
         }
 
         Process {
             id: regionShot
-            command: ["sh", "-c", "sleep 0.1 && hyprshot -m region"]
+            command: ["sh", "-c", "sleep 0.1 && hyprshot -m region -o ~/Pictures/Screenshots/"]
         }
     }
 }
