@@ -117,3 +117,5 @@ xsettingsd
 yazi/
 kdenliverc
 guvcview2/
+quickshell/.env
+vscode-sqltools/runningInfo.json

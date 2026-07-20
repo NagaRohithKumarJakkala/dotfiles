@@ -71,6 +71,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export EDITOR='nvim'
 export VISUAL='nvim'
 alias nv="nvim"
+alias nn="NVIM_APPNAME=nvim-next nvim"
 
 alias -s md='bat'
 alias -s png='eog'
