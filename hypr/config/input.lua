@@ -24,5 +24,11 @@ hl.gesture({
     direction = "horizontal",
     action = "workspace"
 })
-hl.gesture({ fingers = 3, direction = "down", action = "special", workspace_name = "scratchpad", disable_inhibit = true })
+
+hl.gesture({
+    fingers = 3,
+    direction = "down",
+    action = "special",
+    workspace_name = "scratchpad",
+    disable_inhibit = true })
 

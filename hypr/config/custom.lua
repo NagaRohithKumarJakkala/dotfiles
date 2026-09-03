@@ -1,2 +1,1 @@
 -- Force SDL2 applications (like many games and emulators) to use native Wayland
-hl.env("SDL_VIDEODRIVER", "wayland")

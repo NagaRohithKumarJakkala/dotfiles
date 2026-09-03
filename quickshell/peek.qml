@@ -3,20 +3,21 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
-
+import Quickshell.Wayland
 ShellRoot {
     PanelWindow {
         id: window
 
         focusable: false
 
+
         anchors {
             top: true
-            left: true
+            left:true
         }
 
         margins {
-            top: 5
+            top: 0
             left: 650
         }
 

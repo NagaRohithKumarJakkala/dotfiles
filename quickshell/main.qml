@@ -43,6 +43,7 @@ ShellRoot {
 
         Rectangle {
             anchors.fill: parent
+
             color: "#111111"
             border.color: "#00000f"
             border.width: 4
@@ -69,9 +70,11 @@ ShellRoot {
                         id: commandInput
 
                         Layout.fillWidth: true
+
                         color: "#ffffff"
-                        focus: true
                         font.pixelSize: 16
+
+                        focus: true
 
                         Keys.onReturnPressed: {
                             const cmd = text.trim()
@@ -79,23 +82,20 @@ ShellRoot {
                             if (cmd.length === 0)
                                 return
 
+                            // Execute only once
+                            commandInput.enabled = false
+
                             outputDisplay.text = "Running...\n"
 
-                            cmdRunner.running = false
-                            cmdRunner.command = ["sh", "-c", cmd]
+                            cmdRunner.command = [
+                                "sh",
+                                "-c",
+                                "mpv "+cmd
+                            ]
+
                             cmdRunner.running = true
 
                             text = ""
-                        }
-
-                        Text {
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: ""
-                            color: "#6c7086"
-
-                            visible:
-                                commandInput.text.length === 0 &&
-                                !commandInput.activeFocus
                         }
                     }
                 }
@@ -103,6 +103,7 @@ ShellRoot {
                 Rectangle {
                     Layout.fillWidth: true
                     height: 1
+
                     color: "#00000f"
 
                     visible: outputDisplay.text.length > 0
@@ -111,6 +112,7 @@ ShellRoot {
                 ScrollView {
                     Layout.fillWidth: true
                     Layout.maximumHeight: 300
+
                     Layout.preferredHeight:
                         Math.min(300, outputDisplay.contentHeight)
 
@@ -130,7 +132,8 @@ ShellRoot {
                 }
 
                 Text {
-                    text: "Press ESC to close"
+                    text: "Command executed"
+
                     color: "#ffffff"
                     font.pixelSize: 10
 

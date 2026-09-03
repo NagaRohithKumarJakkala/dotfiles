@@ -26,6 +26,4 @@ require("config.windowrule")
 
 require("config.animation")
 
-require("config.ml4w")
-
 require("config.custom")

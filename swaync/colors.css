@@ -1,10 +1,19 @@
-@define-color center-bg                 rgba(8, 8, 11, 1);
-@define-color notification-bg           rgba(8, 8, 11, 1);
-@define-color center-notification-bg    #101014;
-@define-color background                rgba(8, 8, 11, 1);
-@define-color background-alt            #101014;
-@define-color text                      #acb0d0;
-@define-color text-alt                  #787c99;
-@define-color selected                  alpha(@text-alt, .4);
-@define-color hover                     alpha(@selected, .4);
-@define-color urgent                    @text-alt;
+/* Color Palette - OxygenOS / ColorOS Quick Settings Style */
+@define-color cc-bg                   rgba(14, 15, 18, 0.90);
+@define-color card-bg                 #1c1e26;
+@define-color card-bg-hover           #252732;
+@define-color pill-bg                 #22242c;
+@define-color pill-bg-hover           #2c2f3a;
+@define-color circle-bg               #22242c;
+@define-color circle-bg-hover         #2c2f3a;
+@define-color circle-active-bg        #e6e4dc;
+
+@define-color text-primary            #ffffff;
+@define-color text-secondary          #8e93a0;
+@define-color text-muted              #6c707e;
+
+@define-color accent-green            #2e7d32;
+@define-color accent-orange           #f09c38;
+@define-color accent-blue             #539bf5;
+
+@define-color border-color            rgba(255, 255, 255, 0.06);

@@ -1,7 +1,3 @@
--- -----------------------------------------------------
--- Color Configuration (Material You Palette)
--- -----------------------------------------------------
-
 background         = 0x101418ff
 surface            = 0x101418ff
 surface_dim        = 0x101418ff
@@ -31,6 +27,5 @@ outline_variant    = 0x42474eff
 shadow             = 0x000000ff
 scrim              = 0x000000ff
 
--- Used by window configs
 color8             = on_primary
 color11            = on_surface

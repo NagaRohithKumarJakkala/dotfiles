@@ -1,340 +1,255 @@
 @import "colors.css";
 
 * {
-	font-family: "CaskaydiaCove Nerd Font Propo";
-	font-weight: 700;
-	all: unset;
+    all: unset;
+    font-family: "CaskaydiaCove Nerd Font Propo";
+    font-weight: 700;
 
-	/* Global style variables */
-	--border-radius: 16px;
-	--border-radius-s: 8px;
-	--border-radius-xl: 18px;
-
-	/* Shadows: set to none to disable */
-	--shadow: 2px 4px 10px rgba(0,0,0,0.15);
+    --border-radius: 16px;
+    --border-radius-s: 8px;
+    --border-radius-xl: 18px;
+    --shadow: 2px 4px 10px rgba(0,0,0,0.15);
 }
 
 .notification {
-	padding: 5px;
+    padding: 5px;
 }
 
 .notification-background {
-	background: @notification-bg;
-	border-radius: var(--border-radius);
-	margin: 8px;
-	padding: 0;
-	/* box-shadow: none; */
+    background: alpha(@card-bg, 0.7);
+    border-radius: var(--border-radius);
+    margin: 8px;
+    padding: 0;
 }
 
 .notification-background .close-button {
-	margin: 6px;
-	padding: 2px;
-	border-radius: 6px;
-	background: transparent;
-	color: @text;
+    margin: 6px;
+    padding: 2px;
+    border-radius: 6px;
+    background: transparent;
+    color: @text-primary;
 }
 
 .notification-background .close-button:hover {
-	background: @hover;
+    background: @card-bg-hover;
 }
 
 .notification.critical {
-	border: 2px solid @urgent;
-	border-radius: var(--border-radius);
+    border: 2px solid @accent-orange;
+    border-radius: var(--border-radius);
 }
 
 .notification-content {
-	color: @text;
-	margin: 10px;
-	font-weight: 700;
+    color: #ffffff;
+    margin: 10px;
+    font-weight: 700;
 }
 
 .notification-content .text-box {
-	margin: 0 0 0 15px;
+    margin: 0 0 0 15px;
 }
 
 .notification-content .time {
-	padding: 2px;
-	font-size: 0.95rem;
-	font-weight: 800;
+    padding: 2px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #8e93a0;
 }
 
 .notification-content .summary {
-	font-size: 1rem;
-	font-weight: 800;
-	padding: 2px 0;
-	margin-bottom: 2px;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 2px 0;
+    margin-bottom: 2px;
 }
 
 .notification-content .body {
-	color: @text-alt;
-	font-size: 0.8rem;
+    color: #8e93a0;
+    font-size: 0.8rem;
 }
 
-.notification-row .inline-reply-entry,
-.notification-row .inline-reply-button {
-	margin: 5px -5px -5px -5px;
-	padding: 10px 15px;
-	border-radius: var(--border-radius);
-	background: @background-alt;
-}
 
-.notification-row .inline-reply-entry {
-	margin-right: 10px;
-}
-
-.notification-row .inline-reply-button:hover {
-	background: @selected;
-}
-
-.notification-alt-actions {
-	padding: 5px 0;
-}
-
-.notification-action {
-	font-weight: 700;
-	border-radius: var(--border-radius);
-	background: @hover;
-	color: @text;
-	margin: 0 5px;
-	padding: 10px 0;
-}
-
-.notification-action:hover,
-.notification-action:active {
-	background: @selected;
-}
-
+/* ==========================================================================
+   CONTROL CENTER ONLY (OXYGENOS / QUICK SETTINGS PANEL)
+   ========================================================================== */
 .control-center {
-	background: @center-bg;
-	border-radius: var(--border-radius);
-	margin: 5px;
-	padding: 5px 5px 0 5px;
+    background: rgba(14, 15, 18, 0.7);
+
+    margin-top: 136px;
+    margin-right: 20px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+
+    padding: 6px 16px 16px 16px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+}
+/* Header Action Buttons (Settings / Menu) */
+#cc-header {
+    background: transparent;
+    margin-bottom: 6px;
 }
 
+#cc-header button {
+    background: #22242c;
+    color: #ffffff;
+    border-radius: 50%;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 0;
+    font-size: 16px;
+}
+
+#cc-header button:hover {
+    background: #2c2f3a;
+}
+
+/* Dual Rectangular Large Pills (VoWiFi, Wi-Fi) */
+#cc-pills {
+    background: transparent;
+    margin: 2px 0;
+}
+
+#cc-pills button {
+    background: #22242c;
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 14px 16px;
+    margin: 4px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#cc-pills button:hover {
+    background: #2c2f3a;
+}
+
+/* Row of 5 Circle Buttons */
+#cc-circles {
+    background: transparent;
+    margin: 4px 0;
+}
+
+#cc-circles button {
+    background: #22242c;
+    color: #ffffff;
+    border-radius: 50%;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0;
+    margin: 4px;
+    font-size: 17px;
+}
+
+#cc-circles button:hover {
+    background: #2c2f3a;
+}
+
+/* First Circle Button Active State (Green tint as in screenshot) */
+#cc-circles flowboxchild:nth-child(1) button {
+    background: #e6e4dc;
+    color: #2e7d32;
+}
+
+/* 2nd Circle Button (Bluetooth) Active State (Blue tint) */
+#cc-circles flowboxchild:nth-child(2) button {
+    background: #e6e4dc;
+    color: #539bf5;
+}
+
+/* 5th Circle Button (Silent/DND) Active State (Amber tint) */
+#cc-circles flowboxchild:nth-child(5) button {
+    background: #e6e4dc;
+    color: #f09c38;
+}
+
+/* Brightness Slider Capsule */
+#cc-slider {
+    background: transparent;
+    padding: 4px 2px;
+    margin: 6px 0;
+    color: #ffffff;
+}
+
+#cc-slider label {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #f09c38;
+}
+
+#cc-slider trough {
+    background: #22242c;
+    border-radius: 24px;
+    min-height: 46px;
+}
+
+#cc-slider highlight {
+    background: #e6e4dc;
+    border-radius: 24px;
+}
+
+#cc-slider slider {
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* Control Center Notifications Title Header */
+#cc-title {
+    background: transparent;
+    padding: 12px 4px 6px 4px;
+}
+
+#cc-title > label {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+#cc-title button {
+    background: #22242c;
+    color: #787c99;
+    border-radius: 10px;
+    padding: 4px 10px;
+    font-size: 12px;
+}
+
+#cc-title button:hover {
+    background: #2c2f3a;
+    color: #ffffff;
+}
+
+/* Notifications inside Control Center */
 .control-center .notification-background {
-	background: @center-notification-bg;
-	box-shadow: var(--shadow);
+    background: #1c1e26;
+    border-radius: 18px;
+    margin: 6px 0;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Remove close buttons in notification center */
-.control-center .notification-background .close-button,
-.notification-group-close-button {
-	opacity: 0;
+.control-center .notification-background .close-button {
+    opacity: 0;
 }
 
-.notification-group {
-	transition: 200ms;
+#cc-footer {
+    background: transparent;
+    padding: 10px 4px 2px 4px;
 }
 
-/* Notifications expanded-group extra margin */
-.notification-group:not(.collapsed) {
-	margin: 8px;
+#cc-footer label {
+    color: #6c707e;
+    font-size: 11px;
+    font-weight: 600;
 }
 
-.notification-group-headers,
-.notification-group-buttons {
-	color: @text;
-	font-weight: bold;
-	background: @background;
-	border-radius: var(--border-radius);
-	padding: 4px 8px; 
-}
-
-.notification-group-headers > label {
-	margin: 0 3px;
-	font-size: 1rem;
-}
-
-.notification-group-icon {
-	color: @text;
-}
-
-.notification-group-buttons .image-button {
-	background: transparent;
-	color: @text;
-	padding: 4px;
-	border-radius: var(--border-radius);
-}
-
-.notification-group-buttons .image-button:hover {
-	background: @hover;
-}
-
-/* Widgets */
-.widget {
-	margin: 5px;
-	color: @text;
-}
-
-.widget-mpris-album-art {
-	border-radius: var(--border-radius);
-	margin: 6px 4px;
-}
-
-.widget-mpris-title {
-	font-weight: 700;
-	font-size: 1.2rem;
-	margin: 0 3px;
-}
- 
-.widget-mpris-subtitle {
-	color: @text-alt;
-	font-weight: 700;
-	font-size: 0.9rem;
-	margin: 0 3px;
-}
-
-.mpris-background {
-	border-radius: 14px;
-	margin: 3px;
-}
-
-.widget-mpris {
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow);
-}
-
-.mpris-overlay {
-	border-radius: var(--border-radius);
-	padding: 10px;
-	background: @background;
-}
-
-/* Control buttons container  */
-.mpris-overlay > box:last-child {
-	border-radius: var(--border-radius-xl);
-	padding: 0 5px;
-	background: alpha(@hover, .6);
-}
-
-/* Control buttons */
-.widget-mpris-player button {
-	padding: 5px;
-	margin: 0 2.5px;
-}
-
-/* Hover for control buttons */
-.widget-mpris-player button:hover {
-	border-radius: var(--border-radius-s);
-	background: @hover;
-}
-
-/* Do not disturb */
-.widget-dnd {
-	padding: 10px 15px; 
-	border-radius: var(--border-radius);
-	background: @background-alt;
-	box-shadow: var(--shadow);
-	color: @text;
-}
-
-.widget-dnd > label {
-	font-size: 1rem;
-	font-weight: 700;
-}
-
-.widget-dnd switch {
-	background: @hover;
-	border-radius: var(--border-radius-s);
-	box-shadow: none;
-	padding: 2px;
-	transition: 200ms;
-}
-
-.widget-dnd switch slider {
-	background: @text;
-	border-radius: var(--border-radius-s);
-}
-
-.widget-dnd switch:hover,
-.widget-dnd switch:checked {
-	background-color: @selected;
-}
-
-.widget-notifications {
-	margin: 0;
-}
-
-.widget-buttons-grid {
-	border-radius: var(--border-radius);
-	padding: 5px 15px;
-	margin-bottom: 5px;
-	background: @background-alt;
-	box-shadow: var(--shadow);
-}
-
-.widget-buttons-grid button {
-	padding: 10px; 
-	margin: 3px;
-	min-width: 2rem;
-	background: @hover;
-	border-radius: var(--border-radius);
-	transition: 200ms;
-}
-
-.widget-buttons-grid button > label {
-	font-family: "CaskaydiaCove Nerd Font Propo";
-	font-size: 16px;
-	color: @text;
-}
-
-.widget-buttons-grid button:hover {
-	background: @selected;
-}
-
-.widget-buttons-grid button:checked {
-	background-color: @text;
-}
-
-.widget-buttons-grid button:checked > label {
-	color: @background;
-}
-
-.widget-volume,
-.widget-backlight {
-	padding: 8px 14px;
-	margin: 5px 0;
-	border-radius: 12px;
-	color: @text;
-	font-weight: 800;
-	background: @background-alt;
-}
-
-.widget-volume label,
-.widget-backlight label {
-	font-size: 1.1rem;
-}
-
-.widget-volume slider,
-.widget-backlight slider {
-	border-radius: 24px;
-	margin: -8px;
-	background: @text;
-	box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15), 0 4px 4px rgba(0, 0, 0, 0.4);
-	opacity: 1;
-}
-
-.widget-volume trough,
-.widget-backlight trough {
-	background: @hover;
-	margin-left: 8px;
-	border-radius: 12px;  
-}
-
-.widget-volume highlight,
-.widget-backlight highlight {
-	padding: 3.5px;
-	border-radius: 12px;  
-	background: @text;  
-}
-
-/* Change color for placeholder when no notifications */
-.control-center-list-placeholder {
-	color: @text;
-}
-
-/* Avoid 'annoying' backgroud */
-.blank-window {  
-	background: transparent;  
+.blank-window {
+    background: transparent;
 }
