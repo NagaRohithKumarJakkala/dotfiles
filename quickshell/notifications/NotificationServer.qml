@@ -8,7 +8,10 @@ NotificationServer {
     imageSupported: true
 
     onNotification: function(notification) {
-        notification.tracked = true
         NotificationManager.add(notification)
+        if (!NotificationManager.doNotDisturb) {
+        notification.tracked = true
+    }
+
     }
 }

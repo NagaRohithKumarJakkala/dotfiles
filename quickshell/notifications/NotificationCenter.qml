@@ -4,7 +4,8 @@ import Quickshell
 PanelWindow {
     id: root
 
-    visible: NotificationManager.centerOpen
+    visible: NotificationManager.centerOpen || panel.closing
+    focusable: NotificationManager.centerOpen
 
     anchors {
         top: true
@@ -12,27 +13,61 @@ PanelWindow {
     }
 
     margins {
-        top: 12
-        right: 12
+        top: 10
+        right: 10
     }
 
     implicitWidth: 400
-    implicitHeight: 600
+    implicitHeight: 800
 
     color: "transparent"
 
     Rectangle {
-        id: background
+        id: panel
+
+        property bool closing: false
 
         anchors.fill: parent
+        focus: NotificationManager.centerOpen
+
+        Keys.onPressed: function(event) {
+            if (event.key === Qt.Key_Escape) {
+                NotificationManager.closeCenter()
+                event.accepted = true
+            }
+        }
 
         radius: 20
-        color: Qt.rgba(0.10, 0.10, 0.10, 0.95)
+        color: Qt.rgba(0.10, 0.10, 0.10, 0.5)
 
         border.width: 1
         border.color: "#44FFFFFF"
 
+        transform: Translate {
+            id: slideTransform
+
+            x: root.width + 20
+
+            Behavior on x {
+                NumberAnimation {
+                    duration: 250
+                    easing.type: Easing.OutCubic
+                }
+            }
+        }
+
+        opacity: 0
+
+        Behavior on opacity {
+            NumberAnimation {
+                duration: 180
+                easing.type: Easing.OutQuad
+            }
+        }
+
         Column {
+            id: mainColumn
+
             anchors {
                 fill: parent
                 margins: 14
@@ -40,123 +75,149 @@ PanelWindow {
 
             spacing: 12
 
-            // Header
-            Item {
-                width: parent.width
-                height: 40
+            // ============================================================
+// Connectivity
+// ============================================================
 
-                Text {
-                    anchors {
-                        left: parent.left
-                        verticalCenter: parent.verticalCenter
-                    }
+Rectangle {
+    width: parent.width
+    implicitHeight: connectivityRow.implicitHeight + 20
 
-                    text: "Notifications"
+    radius: 14
 
-                    color: "white"
+    color: Qt.rgba(0.14, 0.14, 0.14, 0.7)
 
-                    font.pixelSize: 20
-                    font.bold: true
-                }
+    border.width: 1
+    border.color: "#33FFFFFF"
 
-                Rectangle {
-                    anchors {
-                        right: parent.right
-                        verticalCenter: parent.verticalCenter
-                    }
+    Row {
+        id: connectivityRow
 
-                    width: clearText.implicitWidth + 24
-                    height: 32
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
 
-                    radius: 10
+            margins: 10
+        }
 
-                    visible:
-                        NotificationManager.notifications.length > 0
+        spacing: 10
 
-                    color: clearMouse.containsMouse
-                           ? "#505050"
-                           : "#343434"
+        WifiControl {
+            width: (
+                connectivityRow.width
+                - connectivityRow.spacing
+            ) / 2
+        }
 
-                    Text {
-                        id: clearText
+        BluetoothControl {
+            width: (
+                connectivityRow.width
+                - connectivityRow.spacing
+            ) / 2
+        }
+    }
+}
 
-                        anchors.centerIn: parent
-
-                        text: "Clear All"
-                        color: "#F2F2F2"
-                    }
-
-                    MouseArea {
-                        id: clearMouse
-
-                        anchors.fill: parent
-                        hoverEnabled: true
-
-                        onClicked: {
-                            NotificationManager.clear()
-                        }
-                    }
-                }
-            }
-
-            // Divider
             Rectangle {
                 width: parent.width
-                height: 1
+                radius: 14
 
-                color: "#33FFFFFF"
-            }
+                color: Qt.rgba(0.14, 0.14, 0.14, 0.7)
+                border.width: 1
+                border.color: "#33FFFFFF"
 
-            // Notification area
-            Item {
-                width: parent.width
-                height: parent.height - 65
+                implicitHeight: controlsColumn.implicitHeight + 20
 
-                // Empty state
-                Text {
-                    anchors.centerIn: parent
+                Column {
+                    id: controlsColumn
 
-                    visible:
-                        NotificationManager.notifications.length === 0
-
-                    text: "No notifications"
-
-                    color: "#999999"
-
-                    font.pixelSize: 15
-                }
-
-                // History
-                ListView {
-                    id: notificationList
-
-                    anchors.fill: parent
-
-                    visible:
-                        NotificationManager.notifications.length > 0
-
-                    model:
-                        NotificationManager.notifications
+                    anchors {
+                        fill: parent
+                        margins: 10
+                    }
 
                     spacing: 10
-                    clip: true
 
-                    boundsBehavior:
-                        Flickable.StopAtBounds
+                    VolumeControl {
+                        width: parent.width
+                    }
 
-                    delegate: NotificationHistoryCard {
-                        required property var modelData
-
-                        entry: modelData
-
-                        width: notificationList.width
-
-                        onRemoveRequested: {
-                            NotificationManager.remove(modelData)
-                        }
+                    BrightnessControl {
+                        width: parent.width
                     }
                 }
             }
+
+             MediaSection {
+                width: parent.width
+            }
+
+            NotificationsView {
+                width: parent.width
+            }
+        }
+    }
+
+    Connections {
+        target: NotificationManager
+
+        function onCenterOpenChanged() {
+            if (NotificationManager.centerOpen) {
+                root.openPanel()
+            } else {
+                root.closePanel()
+            }
+        }
+    }
+
+    Component.onCompleted: {
+        if (NotificationManager.centerOpen) {
+            openPanel()
+        }
+    }
+
+    function openPanel() {
+        panel.closing = false
+        closeTimer.stop()
+
+        openTimer.start()
+    }
+
+    function closePanel() {
+        if (panel.closing)
+            return
+
+        openTimer.stop()
+
+        panel.closing = true
+
+        slideTransform.x = root.width + 20
+        panel.opacity = 0
+
+        closeTimer.start()
+    }
+
+    Timer {
+        id: openTimer
+
+        interval: 1
+        repeat: false
+
+        onTriggered: {
+            slideTransform.x = 0
+            panel.opacity = 1
+        }
+    }
+
+    Timer {
+        id: closeTimer
+
+        interval: 250
+        repeat: false
+
+        onTriggered: {
+            panel.closing = false
         }
     }
 }

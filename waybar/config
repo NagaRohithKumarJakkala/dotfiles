@@ -1,7 +1,8 @@
 {
     // General Settings
     "layer": "top",
-    "margin-top": 14,
+    // "margin-top": 14,
+    "margin-top": 4,
     "margin-bottom": 0,
     "margin-left": 14,
     "margin-right": 14,    
@@ -17,19 +18,19 @@
     "modules-left": [
         "hyprland/workspaces",
         "wlr/taskbar",
-        "custom/media",
+        //"custom/media",
+        "custom/hypridle",
         "custom/empty"
     ],
 
     // Modules Center
     "modules-center": [
         "clock",
-        "custom/empty",
+        "custom/empty"
     ],
 
     // Modules Right    
     "modules-right": [
-        //"custom/updates",
         "pulseaudio",
         "bluetooth",
         "network",
@@ -38,6 +39,6 @@
         "battery", 
         "power-profiles-daemon",
         "tray",
-        "custom/notification",
+        "custom/notification"
     ]
 }

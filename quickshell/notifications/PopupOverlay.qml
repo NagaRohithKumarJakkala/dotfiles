@@ -1,10 +1,13 @@
 import QtQuick
 import Quickshell
+import Quickshell.Wayland
 
 PanelWindow {
     id: root
 
     property var server
+
+    WlrLayershell.layer: WlrLayer.Overlay
 
     anchors {
         top: true

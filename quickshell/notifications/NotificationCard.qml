@@ -8,9 +8,9 @@ Rectangle {
     property var notification
     signal dismissRequested()
 
-    readonly property string appNameText: notification?.appName ?? ""
-    readonly property string summaryText: notification?.summary ?? ""
-    readonly property string bodyText: notification?.body ?? ""
+    readonly property string appNameText: notification && notification.appName ? notification.appName : ""
+    readonly property string summaryText: notification && notification.summary ? notification.summary : ""
+    readonly property string bodyText: notification && notification.body ? notification.body : ""
     readonly property var actionList: notification ? notification.actions : []
 
     readonly property int horizontalPadding: 12
@@ -32,17 +32,8 @@ Rectangle {
     border.width: 1
     border.color: "#66FFFFFF"
 
-    scale: hovered ? 1.01 : 1.0
-
-    transformOrigin: Item.Center
-
-
-    Behavior on scale {
-        NumberAnimation {
-            duration: 120
-            easing.type: Easing.OutQuad
-        }
-    }
+    layer.enabled: true
+    layer.smooth: true
 
     Behavior on color {
         ColorAnimation {
@@ -78,21 +69,15 @@ Rectangle {
     spacing: 12
 
     IconImage {
-    id: appIcon
+                id: appIcon
 
-    source: {
-        let icon = (notification?.image && notification.image !== "")
-            ? notification.image
-            : (notification?.appIcon ?? "");
+                source: {
+                    let icon = (notification && notification.image && notification.image !== "")
+                        ? notification.image
+                        : (notification && notification.appIcon ? notification.appIcon : "")
 
-        if (!icon) return "";
-
-        if (icon.startsWith("/") || icon.startsWith("file://")) {
-            return icon;
-        }
-
-        return Quickshell.iconPath(icon, "");
-    }
+                    return NotificationManager.resolveIconSource(icon)
+                }
 
     implicitWidth: 32
     implicitHeight: 32
@@ -157,6 +142,9 @@ Rectangle {
                 delegate: Rectangle {
                     required property var modelData
 
+                    readonly property bool hasAction:
+                        modelData !== null && modelData !== undefined
+
                     width: Math.min(parent.width, actionLabel.implicitWidth + 24)
                     height: 36
 
@@ -180,7 +168,7 @@ Rectangle {
 
                         anchors.centerIn: parent
 
-                        text: modelData.text
+                        text: hasAction && modelData.text ? modelData.text : ""
 
                         color: "#FAFAFA"
 
@@ -197,7 +185,9 @@ Rectangle {
                         cursorShape: Qt.PointingHandCursor
 
                         onClicked: {
-                            modelData.invoke()
+                            if (hasAction && modelData.invoke) {
+                                modelData.invoke()
+                            }
                         }
                     }
                 }

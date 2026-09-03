@@ -119,3 +119,14 @@ kdenliverc
 guvcview2/
 quickshell/.env
 vscode-sqltools/runningInfo.json
+
+eog/
+ghostty/
+opencode/
+quickshell/peek1.qml
+spicetify/
+swaync/colors.css.bk
+swaync/config.json.bk
+swaync/style.css.bk
+swayosd/
+zen/

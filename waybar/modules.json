@@ -1,20 +1,21 @@
 {
+    
     "hyprland/workspaces": {
-        "on-scroll-up": "hyprctl dispatch workspace r-1",
-        "on-scroll-down": "hyprctl dispatch workspace r+1",
-        "on-click": "activate",
-        "active-only": false,
-        "all-outputs": true,
-        "format": "{}",
-        "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
-        },
-        "persistent-workspaces": {
-            "*": 5
-        }
-    },
+	"format": "{name}: {icon}",
+	"format-icons": {
+		"1": "",
+		"2": "",
+		"3": "",
+		"4": "",
+		"5": "",
+		"active": "",
+		"default": ""
+	},
+	"persistent-workspaces": {
+		"*": 5, 
+		"HDMI-A-1": 3 
+    }
+},
     "wlr/taskbar": {
         "format": "{icon}",
         "icon-size": 18,
@@ -42,6 +43,27 @@
         },
         "separate-outputs": true
     },
+    "cava": {
+	//"cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+	"framerate": 30,
+	"autosens": 1,
+	//"sensitivity": 100,
+	"bars": 14,
+	"lower_cutoff_freq": 50,
+	"higher_cutoff_freq": 10000,
+	"method": "pulse",
+	"source": "auto",
+	"stereo": true,
+	"reverse": false,
+	"monstercat": false,
+	"waves": false,
+	"noise_reduction": 0.77,
+	"input_delay": 2,
+	"format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+	"actions": {
+		"on-click-right": "mode"
+	}
+},
     "custom/empty": {
         "format": ""
     },
@@ -54,35 +76,18 @@
         "on-click": "~/.config/ml4w/settings/installupdates.sh",
         "on-click-right": "~/.config/ml4w/settings/software.sh"
     },
-    "custom/notification": {
-        "tooltip-format": "Left: Notifications\nRight: Do not disturb",
-        "format": "{icon}",
-        "format-icons": {
-            "notification": "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
-            "none": "",
-            "dnd-notification": "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
-            "dnd-none": "",
-            "inhibited-notification": "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
-            "inhibited-none": "",
-            "dnd-inhibited-notification": "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
-            "dnd-inhibited-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-    "custom/block":{
-        "format" : "Rohith",
-    },
+   "custom/notification": {
+    "tooltip-format": "Left: Notifications\nRight: Do not disturb",
+    "format": "",
+    "on-click": "~/.config/hypr/scripts/control-center.sh",
+    "on-click-right": "quickshell ipc call notifications toggleDnd",
+    "escape": true
+},
     "custom/hypridle": {
         "format": "",
         "return-type": "json",
-        "escape": true,
         "exec-on-event": true,
-        "interval": 60,
+        "interval": 5,
         "exec": "~/.config/hypr/scripts/hypridle.sh status",
         "on-click": "~/.config/hypr/scripts/hypridle.sh toggle"
     },
@@ -106,15 +111,16 @@
     },
     "network": {
         "format": "{ifname}",
-        "format-wifi": "  {essid} ({signalStrength}%)",
-        "format-ethernet": "  {ifname}",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": " ",
+        "format-ethernet": "",
+        "format-disconnected": "⚠",
         "tooltip-format": "  {ifname} via {gwaddri}",
         "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
         "tooltip-format-ethernet": "  {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "~/.config/ml4w/settings/networkmanager.sh",
+        "on-click": "~/.config/ml4w/settings/networkmanager.sh"
+
     },
     "battery": {
         "states": {

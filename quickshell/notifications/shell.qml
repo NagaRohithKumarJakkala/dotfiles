@@ -30,5 +30,8 @@ ShellRoot {
         function clear(): void {
             NotificationManager.clear()
         }
+        function dnd(): void {
+            NotificationManager.toggleDnd()
+        }
     }
 }
